@@ -19,3 +19,18 @@ edge image?
 
 **Q7.** In Step 6 (`select_horizontal_lines`), how is a line's slope calculated from its endpoints
 `(x1, y1, x2, y2)`?
+
+
+**A1.** Detects the fluid level (y-coordinate) in each of the three bottles
+
+**A2.** `cv2.threshold()` with `cv2.THRESH_BINARY_INV`
+
+**A3.** `5 × 5` kernel
+
+**A4.** `canny_low = 50`, `canny_high = 150`
+
+**A5.** Removes edges outside the region of interest
+
+**A6.** `cv2.HoughLinesP()`
+
+**A7.** `slope = (y2 - y1) / (x2 - x1)`
