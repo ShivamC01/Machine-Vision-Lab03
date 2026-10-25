@@ -10,6 +10,7 @@ the figures made so far — so you can run this after finishing each step.
 Results are written to a single HTML file next to this script.
 """
 import os
+import traceback
 import sys
 import cv2
 import numpy as np
@@ -120,7 +121,16 @@ def evaluate():
         print(f"\n{step} is not implemented yet — stopping here.")
         print("Figures for the earlier steps are still saved below.")
 
+    output_path = os.path.join(LAB_DIR, "lab03_results.html")
+    print(f"Saving HTML report to: {output_path}")
+
+    save_html(*figs, output_path=output_path)
+
+    print(f"HTML report created: {os.path.exists(output_path)}")
     save_html(*figs, output_path=os.path.join(LAB_DIR, "lab03_results.html"))
 
 if __name__ == "__main__":
-    evaluate()
+    try:
+        evaluate()
+    except Exception:
+        traceback.print_exc()
